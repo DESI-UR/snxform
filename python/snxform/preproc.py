@@ -25,7 +25,7 @@ def rescale_flux(flux: np.ndarray) -> np.ndarray:
     return (flux - a) / (b - a)
 
 
-def rebin_flux(wave: np.ndarray, flux: np.ndarray, ivar: np.ndarray=None, z: float=None, minwave: float=3600., maxwave: float=9800., nbins: int=1, log: bool=False, clip: bool=False) -> np.ndarray, np.ndarray, np.ndarray:
+def rebin_flux(wave: np.ndarray, flux: np.ndarray, ivar: np.ndarray=None, z: float=None, minwave: float=3600., maxwave: float=9800., nbins: int=1, log: bool=False, clip: bool=False) -> list[np.ndarray, np.ndarray, np.ndarray]:
     """Rebin differential flux vs wavelength using desispec resample_flux.
     Parameters
     ----------
@@ -100,8 +100,7 @@ def rebin_flux(wave: np.ndarray, flux: np.ndarray, ivar: np.ndarray=None, z: flo
     return basewave, fl, iv
 
 
-def remove_sky_lines(wave: np.ndarray, flux: np.ndarray, ivar: np.ndarray,
-remove_window: int=2, filter_window: int=10) -> np.ndarray:
+def remove_sky_lines(wave: np.ndarray, flux: np.ndarray, ivar: np.ndarray, remove_window: int=2, filter_window: int=10) -> np.ndarray:
     """Remove sky lines (obviously)
 
     Parameters
