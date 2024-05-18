@@ -5,12 +5,13 @@ import os
 import numpy as np
 from snxform import base_path
 
+import desispec
 from desispec.spectra import Spectra
 from desispec.io import read_spectra, write_spectra
 from desispec.coaddition import coadd_cameras
 
 
-def read_spectra(fitsfile: str): -> desispec.spectra.Spectra
+def read_desi_spectra(fitsfile: str) -> desispec.spectra.Spectra:
     """Read in DESI EDR data and apply basic selections. Details of target masking are given in https://desidatamodel.readthedocs.io/en/latest/bitmasks.html.
 
     Parameters
