@@ -1,6 +1,7 @@
 """Helper functions and classes to implement the NN transformer.
 """
 
+import numpy as np
 
 import torch
 import torch.nn as nn
