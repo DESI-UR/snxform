@@ -100,11 +100,14 @@ def rebin_flux(wave: np.ndarray, flux: np.ndarray, ivar: np.ndarray=None, z: flo
     return basewave, fl, iv
 
 
-def remove_sky_lines(wave: np.ndarray, flux: np.ndarray, remove_window: int=2, filter_window: int=10):
+def remove_sky_lines(wave: np.ndarray, flux: np.ndarray, ivar: np.ndarray,
+remove_window: int=2, filter_window: int=10) -> np.ndarray:
     """Remove sky lines (obviously)
 
     Parameters
     ----------
+    wave : ndarray
+        Array of wavelengths
     flux : ndarray
         Array of flux values
     idxs: ndarray or list
@@ -113,14 +116,19 @@ def remove_sky_lines(wave: np.ndarray, flux: np.ndarray, remove_window: int=2, f
         Half-width of window around each sky line to zero out (default=2)
     filter_window: int
         Half-width of window to compute "fill-in" value in sky line, using median.
+
+    Returns
+    -------
+    newflux: ndarray
+        Flux with skylines removed.
     """
     median = np.median(flux)
-    stdev = np.std(flux)
+    stdev = np.sqrt(1/ivar)
 
     newflux = flux.copy()
 
     for idx in idxs:
-        if np.any(np.abs(newflux[idx-2:idx+3]) > 3*stdev):
+        if np.any(np.abs(newflux[idx-2:idx+3]) > 5*stdev):
             newflux[idx-remove_window:idx+remove_window+1] = np.median(newflux[idx-filter_window:idx+filter_window+1])
 
     return newflux
