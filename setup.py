@@ -38,7 +38,8 @@ setup_keywords['install_requires'] = requires
 #
 # Internal data directories
 #
-setup_keywords['data_files'] = [('snxform/etc', glob('etc/*.csv'))]
+setup_keywords['package_data'] = {'snxform': ['etc/*.ecsv', 'etc/*.pt', 'etc/*.json']}
+setup_keywords['include_package_data'] = True
 #
 # Run setup command.
 #
