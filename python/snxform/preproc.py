@@ -3,7 +3,7 @@
 
 import os
 import numpy as np
-from snxform import base_path
+from snxform import src_path
 
 from desispec.interpolation import resample_flux
 
@@ -11,7 +11,7 @@ from astropy.table import Table
 
 
 #- Read in skylines.
-skylines = Table.read(os.path.join(base_path, 'etc/skylines.ecsv'))
+skylines = Table.read(os.path.join(src_path, 'etc/skylines.ecsv'))
 
 
 def rescale_flux(flux: np.ndarray) -> np.ndarray:
