@@ -5,6 +5,8 @@ import os
 import numpy as np
 from snxform import base_path
 
+from desispec.interpolation import resample_flux
+
 from astropy.table import Table
 
 
