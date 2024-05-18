@@ -2,11 +2,14 @@ numpy
 scipy
 astropy
 sncosmo
+fitsio
 tqdm
+numba
 matplotlib
 torch
 
 # May need to manually install these with pip install X...
 desiutil @ git+https://github.com/desihub/desiutil.git@main
 desimodel @ git+https://github.com/desihub/desimodel.git@main
+desitarget @ git+https://github.com/desihub/desitarget.git@main
 desispec @ git+https://github.com/desihub/desispec.git@main

@@ -1,7 +1,15 @@
 """Flux preprocessing routines.
 """
 
+import os
 import numpy as np
+from snxform import base_path
+
+from astropy.table import Table
+
+
+#- Read in skylines.
+skylines = Table.read(os.path.join(base_path, 'etc/skylines.ecsv'))
 
 
 def rescale_flux(flux: np.ndarray) -> np.ndarray:
@@ -62,7 +70,7 @@ def rebin_flux(wave: np.ndarray, flux: np.ndarray, ivar: np.ndarray=None, z: flo
     else:
         basewave = np.linspace(minwave, maxwave, nbins)
 
-    #- Shift to rest frame.
+    #- Shift to rest frame (really only used for simulations).
     if z is not None:
         wave = wave/(1+z) if np.isscalar(z) else np.outer(1./(1+z), wave)
 
@@ -102,11 +110,11 @@ def rebin_flux(wave: np.ndarray, flux: np.ndarray, ivar: np.ndarray=None, z: flo
 
 def remove_sky_lines(wave: np.ndarray, flux: np.ndarray, ivar: np.ndarray, remove_window: int=2, filter_window: int=10) -> np.ndarray:
     """Remove sky lines (obviously)
-
+        
     Parameters
-    ----------
+    ---------- 
     wave : ndarray
-        Array of wavelengths
+        Array of wavelengths 
     flux : ndarray
         Array of flux values
     idxs: ndarray or list
@@ -121,13 +129,17 @@ def remove_sky_lines(wave: np.ndarray, flux: np.ndarray, ivar: np.ndarray, remov
     newflux: ndarray
         Flux with skylines removed.
     """
+
     median = np.median(flux)
-    stdev = np.sqrt(1/ivar)
+    stdev = np.ones_like(ivar)
+    stdev[ivar > 0] = np.sqrt(1/ivar[ivar > 0])
 
     newflux = flux.copy()
+    idxs = np.asarray([(np.abs(wave - skyline)).argmin() for skyline in skylines['Wavelength']])
 
-    for idx in idxs:
-        if np.any(np.abs(newflux[idx-2:idx+3]) > 5*stdev):
-            newflux[idx-remove_window:idx+remove_window+1] = np.median(newflux[idx-filter_window:idx+filter_window+1])
+    for i in range(flux.shape[0]):
+        for idx in idxs:
+            if np.any(np.abs(newflux[i, idx-2:idx+3]) >= 3*stdev[i, idx-2:idx+3]):
+                newflux[i, idx-remove_window:idx+remove_window+1] = np.median(newflux[i, idx-filter_window:idx+filter_window+1])
 
     return newflux
