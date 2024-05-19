@@ -54,7 +54,7 @@ def rebin_flux(wave: np.ndarray, flux: np.ndarray, ivar: np.ndarray=None, z: flo
     nbins : int
         Number of output wavelength bins.
     log : bool
-        If true, use logarithmic bins between minwave and maxwave.
+        If true, use natural logarithmic bins between minwave and maxwave.
     clip : bool
         If true, clip input values below zero before rescaling.
     Returns
@@ -68,7 +68,7 @@ def rebin_flux(wave: np.ndarray, flux: np.ndarray, ivar: np.ndarray=None, z: flo
     """
     #- Choose new binning.
     if log:
-        basewave = np.logspace(np.log10(minwave), np.log10(maxwave), nbins)
+        basewave = np.logspace(np.log(minwave), np.log(maxwave), nbins, base=np.e)
     else:
         basewave = np.linspace(minwave, maxwave, nbins)
 
