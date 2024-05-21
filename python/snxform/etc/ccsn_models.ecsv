@@ -1,0 +1,79 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - {name: Name, datatype: string}
+# - {name: Type, datatype: string}
+# - {name: Redshift, datatype: float64}
+# - {name: Peak MB, datatype: float64}
+# - {name: Optical data, datatype: string}
+# - {name: Near-UV data, datatype: string}
+# - {name: Nspectra, datatype: int64}
+# - {name: EBV, datatype: float64}
+# schema: astropy-2.0
+Name Type Redshift "Peak MB" "Optical data" "Near-UV data" Nspectra EBV
+SN2013by II 0.00359 -18.36 BVugri u,v,uvw1,uvm2,uvw2 7 0.0
+ASASSN15oz II 0.00693 -18.19 UBVRIgri u,b,v,uvw1,uvm2,uvw2 13 0.0
+SN2014G II 0.00563 -18.1 UBVRI v,uvw1,uvm2,uvw2 17 0.24
+SN2007od II 0.00586 -17.93 UBVRIri u,b,v,uvw1,uvm2,uvw2 13 0.0
+SN2013ej II 0.00219 -17.76 UBVRIgriz u,b,v,uvw1,uvm2,uvw2 28 0.049
+SN2013fs II 0.01185 -17.73 BVRIr u,uvw1,uvm2,uvw2 23 0.015
+SN2008bj II 0.019 -17.48 UBVri "" 16 0.081
+SN2016X II 0.00441 -17.38 UBVRIgri u,b,v,uvw1,uvm2,uvw2 33 0.02
+SN2009bw II 0.00382 -17.14 UBVRI uvm2,uvw2 16 0.08
+SN2013ab II 0.00532 -17.14 BVRIgri u,b,uvw1,uvm2,uvw2 22 0.02
+SN2004et II 0.00105 -17.09 UBVRI "" 28 0.07
+SN2012aw II 0.0026 -17.05 UBVRIugriz u,b,v,uvw1,uvm2,uvw2 30 0.028
+SN2008in II 0.00522 -16.96 BVri u,b,v,uvw1,uvm2,uvw2 10 0.076
+SN2009dd II 0.00246 -16.81 UBVRIri "" 6 0.433
+SN1999em II 0.00239 -16.69 UBVRI "" 27 0.077
+SN2009kr II 0.0065 -16.57 BVRI u,b,v,uvw1,uvm2,uvw2 6 0.0
+ASASSN14jb II 0.00603 -16.11 BVgri u,b,uvw1,uvm2,uvw2 10 0.0
+SN2012A II 0.00231 -16.1 UBVRI "" 39 0.012
+SN2009ib II 0.00435 -15.86 BVRIugriz "" 9 0.131
+SN2013am II 0.00269 -15.8 UBVRIi u,b,uvw1,uvm2,uvw2 14 0.55
+SN2009N II 0.00345 -15.03 BVRgriz u,b,v,uvw1,uvm2,uvw2 22 0.113
+SN2016bkv II 0.002 -14.89 UBVRIgri "" 15 0.0
+SN1987A 87A-like 1e-05 -14.33 UBVRI "" 18 0.17
+SN2011fu IIb 0.0185 -18.62 UBVRIz "" 28 0.015
+SN2006T IIb 0.0081 -17.72 BVugri "" 6 0.277
+SN2008ax IIb 0.0019 -16.65 UBVRIugriz u,b,v,uvw1,uvw2 42 0.28
+SN2016gkg IIb 0.00492 -16.61 BVRIgr u,b,v,uvw1,uvm2,uvw2 17 0.09
+SN2008aq IIb 0.00797 -16.6 BVugri u,b,v,uvw1,uvw2 7 0.0
+SN2011ei IIb 0.0093 -16.6 BVRI u,b,v,uvw1,uvw2 13 0.18
+SN2011dh IIb 0.0015 -15.99 UBVRIg "" 39 0.05
+SN2013df IIb 0.00239 -15.9 UBVRI u,b,v,uvw1,uvm2,uvw2 12 0.08
+SN2011hs IIb 0.00571 -15.71 BVRIugriz u,b,v,uvw1,uvw2 13 0.16
+SN2008bo IIb 0.005 -15.46 BVri u,uvw1,uvw2 13 0.033
+SN1993J IIb -0.0001 -13.22 UBVRI "" 50 0.1
+SN2008fq IIn 0.0106 -18.89 BVugri "" 10 0.46
+SN2010al IIn 0.017 -18.75 BVRIuri u,b,v,uvw1,uvm2,uvw2 11 0.053
+SN2007pk IIn 0.01665 -18.71 BVri u,b,v,uvw1,uvm2,uvw2 9 0.081
+SN2009ip IIn 0.00594 -18.33 BVRI u,uvw1,uvm2,uvw2 55 0.01
+SN2006aa IIn 0.0207 -17.61 BVugri "" 6 0.081
+SN2011ht IIn 0.0036 -16.98 BVRI u,b,v,uvw1,uvm2,uvw2 12 0.061
+SN2005bf Ib 0.0189 -18.44 BVugri "" 26 0.1
+SN2007uy Ib 0.007 -18.34 BVri u,b,v,uvw1,uvm2,uvw2 11 0.63
+SN2005hg Ib 0.021 -18.02 UBVri "" 20 0.2235
+SN2009iz Ib 0.0142 -17.69 BVuri uvw1 10 0.2235
+SN2009jf Ib 0.008 -17.68 UBVRIuugrriiz "" 31 0.03
+SN2004gv Ib 0.02 -17.39 BVugri "" 5 0.053
+SN2012au Ib 0.0045 -17.39 BVRIz u,b,v,uvw1,uvm2,uvw2 5 0.0
+SN2006ep Ib 0.015 -17.16 BVugri "" 7 0.233
+SN2004gq Ib 0.00647 -16.97 BVugri "" 24 0.067
+SN1999dn Ib 0.0093 -16.62 UBVRI "" 13 0.048
+iPTF13bvn Ib 0.00449 -16.54 UBVRIgriz u,b,v,uvw1,uvw2 25 0.17
+SN2008D Ib 0.007 -16.47 BVri u,v,uvw1 20 0.6
+SN2007Y Ib 0.0046 -16.32 BVugri u,b,v,uvw1,uvm2,uvw2 6 0.09
+SN2004aw Ic 0.0159 -17.66 UBVRI "" 23 0.35
+SN1994I Ic 0.0015 -17.05 UBVRI "" 27 0.42
+SN2004fe Ic 0.018 -17.05 BVugri "" 9 0.0
+SN2004gt Ic 0.00548 -16.66 BVugri "" 13 0.237
+SN2013ge Ic 0.0055 -16.57 VRIri u,b,v,uvw1,uvm2,uvw2 18 0.047
+SN2007gr Ic 0.0017 -16.2 UBVRIri "" 36 0.03
+SN2011bm Ic 0.0022 -13.1 UBVRIugriz "" 13 0.032
+SN2006aj Ic-BL 0.0334 -19.33 UBVri u,b,v,uvw1,uvm2,uvw2 22 0.2
+SN1998bw Ic-BL 0.0085 -18.93 UBVRI "" 21 0.0
+SN2009bb Ic-BL 0.01 -18.72 BVugri "" 12 0.54
+SN2007ru Ic-BL 0.0155 -18.65 UBVRI "" 5 0.0
+SN2012ap Ic-BL 0.0121 -17.66 BVRI u,b,v,uvw1 12 0.4
+SN2002ap Ic-BL 0.0022 -17.07 UBVRI "" 23 0.008
