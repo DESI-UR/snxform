@@ -24,9 +24,12 @@ def read_desi_spectra(fitsfile: str) -> desispec.spectra.Spectra:
     cspectra : desispec.spectra.Spectra
         Spectra object with coadded, selected fluxes.
     """
-    #- Read the spectra and coadd the 'b', 'r', and 'z' cameras.
+    #- Read the spectra. If there are separate 'b', 'r', and 'z' data, coadd them.
     spectra = read_spectra(fitsfile)
-    cspectra = coadd_cameras(spectra)
+    if 'brz' in spectra.wave:
+        cspectra = spectra
+    else:
+        cspectra = coadd_cameras(spectra)
 
     #- Access the FIBERMAP and EXP_FIBERMAP to apply selections.
     fmap = cspectra.fibermap
