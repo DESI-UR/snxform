@@ -169,7 +169,8 @@ class ViT(nn.Module):
         self.linear_mapper = nn.Linear(self.input_d, self.hidden_d).to(self.device)
         
         # Classification Token
-        self.class_token = nn.Parameter(torch.rand(1, self.hidden_d).to(self.device))
+        #self.class_token = nn.Parameter(torch.rand(1, self.hidden_d).to(self.device))
+        self.class_token = nn.Parameter(torch.rand(1, self.hidden_d)).to(self.device)
         
         # Positional embeddings
         self.pos_embed = nn.Parameter(get_positional_embeddings(
