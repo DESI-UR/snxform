@@ -10,14 +10,17 @@ from desispec.spectra import Spectra
 from desispec.io import read_spectra, write_spectra
 from desispec.coaddition import coadd_cameras
 
+from astropy.table import Table
 
-def read_desi_spectra(fitsfile: str) -> desispec.spectra.Spectra:
+def read_desi_spectra(specfile: str, redshift: str=None) -> desispec.spectra.Spectra:
     """Read in DESI EDR data and apply basic selections. Details of target masking are given in https://desidatamodel.readthedocs.io/en/latest/bitmasks.html.
 
     Parameters
     ----------
-    fitsfile : str
+    specfile : str
         Path to FITS data containing DESI spectra.
+    redshift : str or None
+        Path to redshift data.
     
     Returns
     -------
@@ -25,7 +28,7 @@ def read_desi_spectra(fitsfile: str) -> desispec.spectra.Spectra:
         Spectra object with coadded, selected fluxes.
     """
     #- Read the spectra. If there are separate 'b', 'r', and 'z' data, coadd them.
-    spectra = read_spectra(fitsfile)
+    spectra = read_spectra(specfile)
     if 'brz' in spectra.wave:
         cspectra = spectra
     else:
@@ -55,6 +58,11 @@ def read_desi_spectra(fitsfile: str) -> desispec.spectra.Spectra:
         if col.endswith('DESI_TARGET'):
             targetbits |= (fmap[col] & 1<<60 > 0)
     select &= targetbits
+
+    #- If a redshift file is specified, add it as an extra table.
+    if redshift is not None:
+        zvals = Table.read(redshift, 'REDSHIFTS')
+        cspectra.extra_catalog = zvals
 
     #- Apply the section to the spectra.
     return cspectra[select]
