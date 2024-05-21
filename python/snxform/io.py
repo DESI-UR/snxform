@@ -36,7 +36,15 @@ def read_desi_spectra(fitsfile: str) -> desispec.spectra.Spectra:
     select  = (fmap['OBJTYPE'] == 'TGT')
 
     #- Good fibers have FIBERSTATUS 0 or bit 8 set (MISSINGPOSITION).
-    select &= (expfmap['FIBERSTATUS'] == 0) | (expfmap['FIBERSTATUS'] == 1<<3)
+    #- Be careful to check for multiple exposures in a night.
+    expids = np.unique(cspectra.exp_fibermap['EXPID'])
+    nexp = expids.shape[0]
+    if nexp > 1:
+        for expid in expids:
+            selexp = expfmap['EXPID'] == expid
+            select &= (expfmap['FIBERSTATUS'][selexp] == 0) | (expfmap['FIBERSTATUS'][selexp] == 1<<3)
+    else:
+        select &= (expfmap['FIBERSTATUS'] == 0) | (expfmap['FIBERSTATUS'] == 1<<3)
 
     #- Select targets with BGS_ANY bit (bit number 60) set.
     targetbits = np.zeros_like(select, dtype=bool)
